@@ -1,19 +1,15 @@
-// Declare pin outputs on Arduino board.
 const int redPin = 11;
 const int greenPin = 10;
 const int bluePin = 9;
 
-// Declare default variant amounts.
 int redAmount = 0;
 int greenAmount = 0;
 int blueAmount = 0;
 const int fadeAmount = 5;
 
-// Declare serial pin.
 const int serialPin = 0;
 const int threshold = 249;
 
-// Initialize Arduino board.
 void setup()
 {
   Serial.begin(9600);
@@ -22,7 +18,6 @@ void setup()
   pinMode(bluePin, OUTPUT);
 }
 
-// Main loop procedure.
 void loop()
 {
 resetLoop:
@@ -31,6 +26,7 @@ resetLoop:
   if ((analogRead(serialPin)/4) >= threshold)
   {
     // Initialize redLed fade before multicolour fade loop.
+    
     while (redAmount < 255)
     {
       if ((analogRead(serialPin)/4) < threshold)
@@ -49,6 +45,7 @@ resetLoop:
     while ((analogRead(serialPin)/4) >= threshold) // Loop forever
     {    
       // Fade greenLed on to max value.
+      
       while (greenAmount < 255)
       {
         if ((analogRead(serialPin)/4) < threshold)
@@ -64,6 +61,7 @@ resetLoop:
       }
       
       // Fade redLed off to minimum value and 0 it out to be sure.
+      
       while (redAmount > 0)
       {
         if ((analogRead(serialPin)/4) < threshold)
@@ -77,9 +75,10 @@ resetLoop:
         analogWrite(redPin, redAmount); // Write value to LED
         delay(30); // Wait 30 nanoseconds
       }
-      redAmount = 0; // 0 it out
+      redAmount = 0; // zero it out
       
       // Fade blueLed on to max value.
+      
       while (blueAmount < 255)
       {
         if ((analogRead(serialPin)/4) < threshold)
@@ -94,7 +93,8 @@ resetLoop:
         delay(30); // Wait 30 nanoseconds
       }
       
-      // Fade greenLed off to minimum value and 0 it out to be sure.
+      // Fade greenLed off to minimum value and zero it out to be sure.
+      
       while (greenAmount > 0)
       {
         if ((analogRead(serialPin)/4) < threshold)
@@ -111,6 +111,7 @@ resetLoop:
       greenAmount = 0; // 0 it out
       
       // Fade redLed on to max value.
+      
       while (redAmount < 255)
       {
         if ((analogRead(serialPin)/4) < threshold)
@@ -126,6 +127,7 @@ resetLoop:
       }
       
       // Fade blueLed off to minimum value and 0 it out to be sure.
+      
       while (blueAmount > 0)
       {
         if ((analogRead(serialPin)/4) < threshold)
