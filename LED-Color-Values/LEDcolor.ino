@@ -1,3 +1,5 @@
+// LED Color Value Tests - fades through a collection of labeled colors
+
 const int redPin = 6;
 const int greenPin = 5;
 const int bluePin = 3;
