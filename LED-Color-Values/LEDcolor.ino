@@ -23,6 +23,8 @@ void loop()
   delay(2000);  
   setColor(0, 0, 255);  // aqua
   delay(2000);
+  setColor(0, 40, 255);  // teal
+  delay(2000);
   setColor(0, 255, 255);  // blue
   delay(2000);
   setColor(0, 255, 100);  // lavender
